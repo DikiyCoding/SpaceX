@@ -15,11 +15,9 @@ class DetailsActivity : BindingActivity<ActivityDetailsBinding, DetailsViewModel
         return detailsViewModel
     }
 
-    override fun getVariable(): Int {
-        return BR.viewModelDetails
-    }
+    override fun getVariable(): Int =
+        BR.viewModelDetails
 
-    override fun getLayoutId(): Int {
-        return R.layout.activity_details
-    }
+    override fun getLayoutId(): Int =
+        R.layout.activity_details
 }
