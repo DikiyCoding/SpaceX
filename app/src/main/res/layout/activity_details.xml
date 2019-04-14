@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.views.DetailsActivity">
+
+    <data>
+        <variable name="viewModelDetails"
+                  type="com.example.spacex.ui.viewmodels.DetailsViewModel"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1">
+
+        <TableRow style="@style/table_row">
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_span="2"
+                    android:scaleType="fitCenter"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:transitionName="item_transition" tools:targetApi="lollipop"
+                    android:src="@{viewModelDetails.item.links.missionPatchSmall}"/>
+        </TableRow>
+
+        <TableRow style="@style/table_row">
+            <TextView style="@style/tv_common.tv_title"
+                      android:text="@string/flight_number"/>
+            <TextView style="@style/tv_common.tv_value"
+                      android:text="@{viewModelDetails.item.flightNumber.toString()}"/>
+        </TableRow>
+
+        <TableRow style="@style/table_row">
+            <TextView style="@style/tv_common.tv_title"
+                      android:text="@string/mission_name"/>
+            <TextView style="@style/tv_common.tv_value"
+                      android:text="@{viewModelDetails.item.missionName}"/>
+        </TableRow>
+
+        <TableRow style="@style/table_row">
+            <TextView style="@style/tv_common.tv_paragraph"
+                      android:text="@string/rocket"/>
+        </TableRow>
+
+        <TableRow style="@style/table_row">
+            <TextView style="@style/tv_common.tv_title"
+                      android:text="@string/title_name"/>
+            <TextView style="@style/tv_common.tv_value"
+                      android:text="@{viewModelDetails.item.rocket.rocketName}"/>
+        </TableRow>
+
+        <TableRow style="@style/table_row">
+            <TextView style="@style/tv_common.tv_title"
+                      android:text="@string/title_type"/>
+            <TextView style="@style/tv_common.tv_value"
+                      android:text="@{viewModelDetails.item.rocket.rocketType}"/>
+        </TableRow>
+
+        <TableRow style="@style/table_row">
+            <TextView style="@style/tv_common.tv_title"
+                      android:text="@string/launch_success"/>
+            <TextView style="@style/tv_common.tv_value"
+                      android:text="@{viewModelDetails.item.launchSuccess.toString()}"/>
+        </TableRow>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="@{viewModelDetails.item.launchSuccess ? View.GONE : View.VISIBLE}">
+
+            <TableRow style="@style/table_row">
+                <TextView style="@style/tv_common.tv_paragraph"
+                          android:text="@string/failure_details"/>
+            </TableRow>
+
+            <TableRow style="@style/table_row">
+                <TextView style="@style/tv_common.tv_title"
+                          android:text="@string/title_time"/>
+                <TextView style="@style/tv_common.tv_value"
+                          android:text="@{viewModelDetails.item.launchFailureDetails.time.toString()}"/>
+            </TableRow>
+
+            <TableRow style="@style/table_row">
+                <TextView style="@style/tv_common.tv_title"
+                          android:text="@string/title_reason"/>
+                <TextView style="@style/tv_common.tv_value"
+                          android:text="@{viewModelDetails.item.launchFailureDetails.reason}"/>
+            </TableRow>
+
+        </LinearLayout>
+
+        <TableRow style="@style/table_row">
+            <TextView style="@style/tv_common.tv_title"
+                      android:text="@string/title_details"/>
+            <TextView style="@style/tv_common.tv_value"
+                      android:text="@{viewModelDetails.item.details}"
+                      android:maxWidth="0dp"/>
+        </TableRow>
+
+    </TableLayout>
+
+</layout>
